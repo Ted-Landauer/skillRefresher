@@ -15,7 +15,6 @@ metadata:
   uid: 85f15691-e398-4524-a8a5-d0a33c20a0ac
 spec:
   progressDeadlineSeconds: 600
-  replicas: 3
   revisionHistoryLimit: 10
   selector:
     matchLabels:
@@ -37,6 +36,9 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
+        envFrom:
+          - configMapRef:
+              name: synergychat-web-configmap
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
